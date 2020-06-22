@@ -1,4 +1,6 @@
 import numpy as np
+import pickle
+
 
 # activation function - converts the output from the neural network to a sigmod between 0 and 1
 def sigmoid(x):
@@ -42,8 +44,12 @@ for iteration in range(100000):
     # makes adjustments to the synpatic weights
     synaptic_weights += np.dot(input_layer.T, adjustments)
 
+
 print("Synaptic weights after training: ")
 print(synaptic_weights)
+
+with open('training.pickle', 'wb') as f:
+    pickle.dump(synaptic_weights, f)
 
 print("Outputs after training: ")    
 print(outputs)
